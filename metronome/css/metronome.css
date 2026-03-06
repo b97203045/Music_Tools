@@ -1,0 +1,369 @@
+/* === Metronome Layout === */
+.metronome {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.metronome section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+}
+
+.metronome section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+/* === Beat Display === */
+.beat-display {
+    background: var(--bg-primary) !important;
+    border: none !important;
+    padding: 1.5rem 1rem !important;
+}
+
+.beat-dots {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.beat-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-full);
+    background: var(--border);
+    border: 2px solid var(--border-light);
+    transition: background var(--transition-fast);
+}
+
+.beat-dot.active {
+    animation: beat-flash 0.2s ease-out;
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.beat-dot.downbeat {
+    animation: beat-flash-accent 0.25s ease-out;
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.5);
+}
+
+@keyframes beat-flash {
+    0% {
+        background: var(--accent);
+        box-shadow: 0 0 20px var(--accent-glow);
+        transform: scale(1.15);
+    }
+    100% {
+        background: var(--border);
+        box-shadow: none;
+        transform: scale(1);
+    }
+}
+
+@keyframes beat-flash-accent {
+    0% {
+        background: var(--accent-secondary);
+        box-shadow: 0 0 24px rgba(245, 166, 35, 0.6);
+        transform: scale(1.2);
+    }
+    100% {
+        background: var(--border);
+        box-shadow: none;
+        transform: scale(1);
+    }
+}
+
+/* === BPM Control === */
+.bpm-control {
+    text-align: center;
+}
+
+.bpm-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.bpm-adjust {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background var(--transition-fast);
+}
+
+.bpm-adjust:hover {
+    background: var(--bg-surface-hover);
+}
+
+.bpm-input {
+    width: 80px;
+    height: 48px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--bg-primary);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    -moz-appearance: textfield;
+}
+
+.bpm-input::-webkit-inner-spin-button,
+.bpm-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.bpm-slider {
+    width: 100%;
+    margin: 0.75rem 0;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.tempo-label {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-style: italic;
+}
+
+/* === Play / Tap Controls === */
+.play-control {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.play-btn {
+    flex: 1;
+    max-width: 200px;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: var(--radius-lg);
+    background: var(--accent);
+    color: #fff;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.play-btn:hover {
+    background: #d63050;
+    transform: scale(1.02);
+}
+
+.play-btn.playing {
+    background: var(--bg-surface);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+.play-btn.playing:hover {
+    background: var(--bg-surface-hover);
+}
+
+.tap-btn {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    transition: background var(--transition-fast);
+}
+
+.tap-btn:hover {
+    background: var(--bg-surface-hover);
+}
+
+/* === Time Signature === */
+.ts-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.ts-buttons button {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    font-weight: 600;
+    transition: background var(--transition-fast);
+}
+
+.ts-buttons button:hover {
+    background: var(--bg-surface-hover);
+}
+
+.ts-buttons button.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* === Subdivisions === */
+.sub-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sub-buttons button {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    font-weight: 500;
+    transition: background var(--transition-fast);
+}
+
+.sub-buttons button:hover {
+    background: var(--bg-surface-hover);
+}
+
+.sub-buttons button.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* === Sound & Volume === */
+.sound-volume {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sound-select {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sound-select select {
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.volume-control {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 150px;
+}
+
+.volume-control input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.volume-control label,
+.sound-select label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* === Tempo Presets === */
+.preset-buttons {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.preset-btn {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.preset-btn:hover {
+    background: var(--bg-surface-hover);
+    color: var(--text-primary);
+}
+
+.preset-btn.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* === Keyboard Shortcuts Help === */
+.shortcuts-help {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.shortcuts-help kbd {
+    display: inline-block;
+    padding: 0.1em 0.4em;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.85em;
+}
+
+/* === Responsive === */
+@media (max-width: 480px) {
+    .metronome {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .metronome section {
+        padding: 1rem;
+    }
+
+    .beat-dot {
+        width: 28px;
+        height: 28px;
+    }
+
+    .bpm-input {
+        width: 70px;
+        height: 42px;
+        font-size: 1.25rem;
+    }
+
+    .play-btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .sound-volume {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Tools</title>
+    <link rel="stylesheet" href="shared/css/base.css">
+    <style>
+        .landing {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .landing h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .landing p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tool-card {
+            display: block;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: border-color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            color: var(--text-primary);
+        }
+
+        .tool-card h2 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .tool-card span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <main class="landing">
+        <h1>Music Tools</h1>
+        <p>A collection of browser-based tools for musicians.</p>
+
+        <div class="tool-grid">
+            <a href="metronome/index.html" class="tool-card">
+                <h2>Metronome</h2>
+                <span>Precise tempo keeping with customizable sounds and time signatures.</span>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

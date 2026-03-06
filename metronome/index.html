@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metronome - Music Tools</title>
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="css/metronome.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav><a href="../index.html">Music Tools</a> &rsaquo; Metronome</nav>
+    </header>
+
+    <main class="metronome">
+        <!-- Beat Display -->
+        <section class="beat-display" aria-label="Beat indicator">
+            <div class="beat-dots" id="beatDots"></div>
+        </section>
+
+        <!-- BPM Control -->
+        <section class="bpm-control">
+            <div class="bpm-buttons">
+                <button class="bpm-adjust" data-delta="-5">-5</button>
+                <button class="bpm-adjust" data-delta="-1">-1</button>
+                <input type="number" id="bpmInput" class="bpm-input" min="20" max="600" value="120">
+                <button class="bpm-adjust" data-delta="1">+1</button>
+                <button class="bpm-adjust" data-delta="5">+5</button>
+            </div>
+            <input type="range" id="bpmSlider" class="bpm-slider" min="20" max="600" value="120">
+            <div class="tempo-label" id="tempoLabel">Allegretto</div>
+        </section>
+
+        <!-- Play / Tap -->
+        <section class="play-control">
+            <button id="playBtn" class="play-btn">PLAY</button>
+            <button id="tapBtn" class="tap-btn">TAP TEMPO</button>
+        </section>
+
+        <!-- Time Signature -->
+        <section class="time-signature">
+            <h3>Time Signature</h3>
+            <div class="ts-buttons" id="tsButtons">
+                <button data-beats="2" data-unit="4">2/4</button>
+                <button data-beats="3" data-unit="4">3/4</button>
+                <button data-beats="4" data-unit="4" class="active">4/4</button>
+                <button data-beats="5" data-unit="4">5/4</button>
+                <button data-beats="6" data-unit="8">6/8</button>
+                <button data-beats="7" data-unit="8">7/8</button>
+            </div>
+        </section>
+
+        <!-- Subdivisions -->
+        <section class="subdivisions">
+            <h3>Subdivisions</h3>
+            <div class="sub-buttons" id="subButtons">
+                <button data-sub="1" class="active">&#9833; Quarter</button>
+                <button data-sub="2">&#9834; Eighth</button>
+                <button data-sub="3">Triplet</button>
+                <button data-sub="4">&#9836; Sixteenth</button>
+            </div>
+        </section>
+
+        <!-- Sound & Volume -->
+        <section class="sound-volume">
+            <div class="sound-select">
+                <label for="soundSelect">Sound:</label>
+                <select id="soundSelect"></select>
+            </div>
+            <div class="volume-control">
+                <label for="volumeSlider">Volume:</label>
+                <input type="range" id="volumeSlider" min="0" max="100" value="80">
+            </div>
+        </section>
+
+        <!-- Tempo Presets -->
+        <section class="tempo-presets">
+            <h3>Tempo Markings</h3>
+            <div class="preset-buttons" id="presetButtons"></div>
+        </section>
+
+        <!-- Shortcuts Help -->
+        <div class="shortcuts-help">
+            <kbd>Space</kbd> Play/Stop &nbsp;
+            <kbd>&uarr;</kbd><kbd>&darr;</kbd> BPM &plusmn;1 &nbsp;
+            <kbd>Shift</kbd>+Arrows &plusmn;5 &nbsp;
+            <kbd>T</kbd> Tap &nbsp;
+            <kbd>M</kbd> Mute &nbsp;
+            <kbd>1</kbd>-<kbd>4</kbd> Subdivision &nbsp;
+            <kbd>[</kbd><kbd>]</kbd> Time Sig
+        </div>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
