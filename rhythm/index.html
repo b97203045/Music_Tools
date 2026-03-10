@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Imitation Practice — Music Tools</title>
+    <link rel="stylesheet" href="../shared/css/base.css">
+    <link rel="stylesheet" href="css/rhythm.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="../index.html" class="site-header-back">&larr; Music Tools</a>
+    </header>
+
+    <main class="rhythm-container">
+        <h1>Rhythm Imitation Practice</h1>
+
+        <!-- Status banner -->
+        <div id="phase-banner" class="phase-banner">Press Start to begin</div>
+
+        <!-- Beat display -->
+        <section class="section beat-display-section">
+            <div id="beat-display" class="beat-display"></div>
+        </section>
+
+        <!-- Notation area -->
+        <section class="section notation-section">
+            <div id="notation-area" class="notation-area"></div>
+        </section>
+
+        <!-- Score display -->
+        <section id="score-section" class="section score-section hidden">
+            <div class="score-header">
+                <span id="score-grade" class="score-grade"></span>
+                <span id="score-percent" class="score-percent"></span>
+            </div>
+            <div id="score-breakdown" class="score-breakdown"></div>
+        </section>
+
+        <!-- Settings -->
+        <section class="section settings-section">
+            <!-- BPM -->
+            <div class="setting-row">
+                <label>BPM</label>
+                <div class="bpm-controls">
+                    <button id="bpm-down-5" class="btn-adjust" title="-5">-5</button>
+                    <button id="bpm-down-1" class="btn-adjust" title="-1">-1</button>
+                    <input type="number" id="bpm-input" min="20" max="600" value="80">
+                    <button id="bpm-up-1" class="btn-adjust" title="+1">+1</button>
+                    <button id="bpm-up-5" class="btn-adjust" title="+5">+5</button>
+                </div>
+                <input type="range" id="bpm-slider" min="20" max="300" value="80">
+            </div>
+
+            <!-- Time Signature -->
+            <div class="setting-row">
+                <label>Time Signature</label>
+                <div class="btn-group" id="time-sig-group">
+                    <button data-beats="2" data-unit="4">2/4</button>
+                    <button data-beats="3" data-unit="4">3/4</button>
+                    <button data-beats="4" data-unit="4" class="active">4/4</button>
+                </div>
+            </div>
+
+            <!-- Difficulty -->
+            <div class="setting-row">
+                <label>Difficulty</label>
+                <div class="btn-group" id="difficulty-group">
+                    <button data-difficulty="beginner" class="active">Beginner</button>
+                    <button data-difficulty="intermediate">Intermediate</button>
+                    <button data-difficulty="advanced">Advanced</button>
+                </div>
+            </div>
+
+            <!-- Measures -->
+            <div class="setting-row">
+                <label>Measures</label>
+                <div class="btn-group" id="measures-group">
+                    <button data-measures="1" class="active">1</button>
+                    <button data-measures="2">2</button>
+                    <button data-measures="3">3</button>
+                    <button data-measures="4">4</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls -->
+        <section class="section controls-section">
+            <button id="btn-start" class="btn-primary">START</button>
+            <button id="btn-stop" class="btn-secondary hidden">STOP</button>
+            <button id="btn-retry" class="btn-secondary hidden">RETRY (R)</button>
+            <button id="btn-next" class="btn-primary hidden">NEXT (N)</button>
+        </section>
+
+        <!-- Keyboard shortcuts -->
+        <section class="section shortcuts-section">
+            <details>
+                <summary>Keyboard Shortcuts</summary>
+                <ul class="shortcuts-list">
+                    <li><kbd>Space</kbd> Start / Stop</li>
+                    <li><kbd>Any key</kbd> Hit (during imitation)</li>
+                    <li><kbd>R</kbd> Retry (after result)</li>
+                    <li><kbd>N</kbd> Next pattern (after result)</li>
+                </ul>
+            </details>
+        </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
