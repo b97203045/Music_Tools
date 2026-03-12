@@ -154,12 +154,7 @@ export class RhythmEngine {
 
     recordHit(timestamp) {
         if (this.phase !== PHASES.IMITATING) return;
-        if (this.anchorTime === null) {
-            // First hit — determine the containing measure's downbeat
-            this.anchorTime = this._findMeasureDownbeat(timestamp);
-            this._recordingEndTime = this.anchorTime +
-                getPatternDurationBeats(this.currentPattern) * this.secondsPerBeat;
-        }
+        // anchorTime and _recordingEndTime are pre-set when IMITATING phase begins
 
         const beatPosition = (timestamp - this.anchorTime) / this.secondsPerBeat;
         this.userHits.push({ beatPosition, timestamp });
@@ -379,6 +374,11 @@ export class RhythmEngine {
 
                 if (beatInPhase >= totalDemoBeats - 1) {
                     this._phaseStartBeat = this._globalBeatIndex + 1;
+                    // Pre-set anchor and recording window at the known IMITATING downbeat
+                    const imitatingStartTime = this._nextNoteTime + this.secondsPerBeat;
+                    this.anchorTime = imitatingStartTime;
+                    this._recordingEndTime = imitatingStartTime +
+                        totalDemoBeats * this.secondsPerBeat;
                     this._setPhase(PHASES.IMITATING);
                 }
                 break;
@@ -403,17 +403,6 @@ export class RhythmEngine {
         if (preset) {
             preset.generate(this.audioContext, this.gainNode, beatType, time);
         }
-    }
-
-    /**
-     * Given a timestamp, find the downbeat of the containing measure.
-     * Uses the global beat grid established at session start.
-     */
-    _findMeasureDownbeat(timestamp) {
-        // The beat grid: beat 0 starts at _sessionStartTime
-        const elapsedBeats = (timestamp - this._sessionStartTime) / this.secondsPerBeat;
-        const measureIndex = Math.floor(elapsedBeats / this.beatsPerMeasure);
-        return this._sessionStartTime + (measureIndex * this.beatsPerMeasure * this.secondsPerBeat);
     }
 
     // --- Private: Phase & Notifications ---
